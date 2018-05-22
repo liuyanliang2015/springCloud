@@ -14,7 +14,7 @@ B：如果服务提供者有多个节点，那么nginx负载的时候也比较�
 
 服务提供者和服务消费者启动的时候，都会向服务发现组件注册。如果服务提供者停止服务，服务消费者会隔一段时间向服务发现者组件发送心跳，如果没有服务提供者的相应，则将此服务提供者从服务发现组件剔除。
 
-![微服务原理](https://github.com/liuyanliang2015/BertNote/blob/master/pics/spring-cloud1.png)
+![微服务原理](https://github.com/liuyanliang2015/springCloud/blob/master/pics/spring-cloud1.png)
 
 服务发现组件的功能：
 
