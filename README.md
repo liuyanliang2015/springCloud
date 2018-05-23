@@ -38,6 +38,8 @@ B：服务器端发现，例如：consul+nginx
 
 ## 02 Eureka-ribbon
 
+### A：Eureka与ribbon关系
+
 Eureka担当注册中心，服务发现的角色
 
 ribbon负责负载均衡的功能
@@ -45,3 +47,43 @@ ribbon负责负载均衡的功能
 Eureka已经默认集成ribbon，也就是配置了spring-cloud-starter-eureka，就需要配置ribbon了
 
 ![ribbon](https://github.com/liuyanliang2015/springCloud/blob/master/pics/ribbon2.png)
+
+
+### B：负载均衡策略
+
+@LoadBalanced让RestTemplate拥有负载均衡能力
+
+       @Bean
+ 	   @LoadBalanced
+ 	   public RestTemplate restTemplate() {
+          return new RestTemplate();
+       }
+
+自定义负载均衡策略（消费者）
+
+    @RibbonClient(name = "provider-user", configuration = TestConfiguration.class)
+
+为了让自定义负载策略只作用于某一个服务提供节点，有两种方法：
+
+一种是将TestConfiguration定义在其他的包下，让@SpringBootApplication扫描不到
+
+另外一种是使用自定义注解
+
+    public @interface ExcludeFromComponentScan {}
+
+    @SpringBootApplication
+	@ComponentScan(excludeFilters = { @ComponentScan.Filter(type = FilterType.ANNOTATION, value = ExcludeFromComponentScan.class) })
+
+
+    @Configuration
+	@ExcludeFromComponentScan
+	public class TestConfiguration {
+
+  	@Bean
+  	public IRule ribbonRule() {
+	 //随机策略
+    return new RandomRule();
+  	}
+	}
+
+
