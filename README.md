@@ -34,3 +34,14 @@ C:健康检查<br>
 A：客户端发现，例如：Eureka，Zookeeper
 
 B：服务器端发现，例如：consul+nginx
+
+
+## 02 Eureka-ribbon
+
+Eureka担当注册中心，服务发现的角色
+
+ribbon负责负载均衡的功能
+
+Eureka已经默认集成ribbon，也就是配置了spring-cloud-starter-eureka，就需要配置ribbon了
+
+![ribbon](https://github.com/liuyanliang2015/springCloud/blob/master/pics/spring-ribbon2.png)

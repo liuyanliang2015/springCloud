@@ -9,7 +9,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.web.client.RestTemplate;
-
+/**
+ * Eureka已经默认集成ribbon，所以配置了Eureka，就不用配置ribbon了
+ *
+ */
 @SpringBootApplication
 @EnableEurekaClient
 //provider-user自定义ribbon负载策略(随机)
