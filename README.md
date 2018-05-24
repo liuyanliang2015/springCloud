@@ -87,3 +87,10 @@ Eureka已经默认集成ribbon，也就是配置了spring-cloud-starter-eureka�
 	}
 
 
+## 03 eureka-ribbon-props
+
+上面的例子是通过注解的方式配置ribbon以及策略，本例是通过yum(或者properties)来配置ribbon，相对比较简单。
+
+    provider-user:
+  	 ribbon:
+     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
